@@ -1,22 +1,8 @@
 <!--音乐播放器所用的文件-->
 <!-- require APlayer -->
 <link rel="stylesheet" href="https://npm.elemecdn.com/aplayer@1.10.1/dist/APlayer.min.css">
-<script src="https://npm.elemecdn.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
-<!-- require MetingJS -->
-<script src="https://npm.elemecdn.com/meting2@0.0.1/js/Meting.min.js"></script>
-
-<!--Alist V3建议添加的，已经默认添加了，如果你的没有建议加上-->
-<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=String.prototype.replaceAll"></script>
-
 <!--引入字体，全局字体使用-->
 <link rel="stylesheet" href="https://npm.elemecdn.com/lxgw-wenkai-webfont@1.1.0/lxgwwenkai-regular.css" />
-
-<!--评论系统使用的js-->
-<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
-
-<!--不蒜子计数器-->
-<script async src="https://busuanzi.icodeq.com/busuanzi.pure.mini.js"></script>
-
 <!-- Font6，自定义底部使用和看板娘使用的图标和字体文件-->
 <link type='text/css' rel="stylesheet" href="https://npm.elemecdn.com/font6pro@6.3.0/css/fontawesome.min.css"
   media='all'>
@@ -25,15 +11,20 @@
 <!--音乐播放器所用的文件-->
 <!-- require APlayer -->
 <link rel="stylesheet" href="https://npm.elemecdn.com/aplayer@1.10.1/dist/APlayer.min.css">
+
 <script src="https://npm.elemecdn.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
 <!-- require MetingJS -->
 <script src="https://npm.elemecdn.com/meting2@0.0.1/js/Meting.min.js"></script>
 
+<!--Alist V3建议添加的，已经默认添加了，如果你的没有建议加上-->
+<script src="https://polyfill.alicdn.com/v3/polyfill.min.js?features=String.prototype.replaceAll"></script>
+<!--评论系统使用的js-->
+<script src='https://unpkg.com/valine/dist/Valine.min.js'></script>
+
+<script src="https://npm.elemecdn.com/aplayer@1.10.1/dist/APlayer.min.js"></script>
+<!-- require MetingJS -->
+<script src="https://npm.elemecdn.com/meting2@0.0.1/js/Meting.min.js"></script>
 <style>
-  /* 去除通知栏 右上角 X */
-  .notify-render .hope-close-button {
-    display: none;
-  }
 
   /*音乐播放器进一步进行隐藏*/
   /* 需要就加不需要就不用加 */
@@ -84,6 +75,8 @@
     padding: var(--hope-space-1) !important;
   }
 
+  /* 去除公告x关闭按钮 */
+  .notify-render .hope-close-button{display: none;}
   /* 此选项两处CSS 在v3.31.0中已优化 滚动显示 和 右下角设置网格模式尺寸大小 */
   /* 文字超长自动换行 */
   /*.name-box .name {
@@ -98,82 +91,68 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
   height: 100px;
 }*/
 
-  /*
-  图片API用法点进去都会有食用说明的,API来自网络不保证实效性稳定性自己测试
-  樱花：https://www.dmoe.cc
-  夏沫：https://cdn.seovx.com
-  搏天：https://api.btstu.cn/doc/sjbz.php
-  姬长信：https://github.com/insoxin/API
-  小歪：https://api.ixiaowai.cn/
-  保罗：https://api.paugram.com
-  墨天逸：https://api.mtyqx.cn
-  岁月小筑：https://img.xjh.me
-  东方Project：https://img.paulzzh.com
-  
-  */
-  /* 白色 */
-  /* https://bj.vipgj555.cn/file/7483aaaa9407136b346ac.png */
-  /* https://bj.vipgj555.cn/file/1e49b40281eb87c065b0f.png */
-  /* 黑色 */
-  /* https://bj.vipgj555.cn/file/a505e2bc92a89d0fbf2a2.png */
-
-  /*白天背景图*/
-/*   .hope-ui-light {
-    background-image: url("https://bj.vipgj555.cn/file/b45283bc5c3e3c4ac1ac1.png") !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position-x: center;
-  } */
-
-  /*夜间背景图*/
-  /* .hope-ui-dark {
-    background-image: url("https://bj.vipgj555.cn/file/2d7fac5599a4da0cc1f5a.png") !important;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-attachment: fixed;
-    background-position-x: center;
-  } */
-
+/*白天背景图*/
+ .hope-ui-light {
+    background-image: url("https://tuapi.eees.cc/api.php?category=dongman&type=302") !important;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    background-position-x:center;
+}
+/*夜间背景图*/
+ .hope-ui-dark {
+    background-image: url("https://tuapi.eees.cc/api.php?category=dongman&type=302") !important;
+    background-repeat:no-repeat;
+    background-size:cover;
+    background-attachment:fixed;
+    background-position-x:center;
+}
   /* 白天背景图 - PC */
-  .hope-ui-light {
-    background-image: url("https://bj.vipgj555.cn/file/b45283bc5c3e3c4ac1ac1.png");
+  /* .hope-ui-light {
+    background-image: url("https://bj.vipgj555.cn/file/7c2f066b076ab2ed935e1.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position-x: center;
-  }
+  } */
 
-  /* 夜间背景图 - PC */
-  .hope-ui-dark {
-    background-image: url("https://bj.vipgj555.cn/file/2d7fac5599a4da0cc1f5a.png");
+   /* 夜间背景图 - PC  */
+  /* .hope-ui-dark {
+    background-image: url("https://bj.vipgj555.cn/file/1ed14dffb6a06aaaea8ad.png");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
     background-position-x: center;
-  }
+  } */
 
   /* 白天背景图 - 手机 */
-  @media only screen and (max-width: 600px) {
-    .hope-ui-light {
-      background-image: url("https://bj.vipgj555.cn/file/7483aaaa9407136b346ac.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
-      background-position-x: center;
-    }
-  }
+  /* @media only screen and (max-width: 600px) { */
+    /* .hope-ui-light { */
+      /* background-image: url("https://bj.vipgj555.cn/file/1bd41c38b11290b7b491b.png"); */
+      /* background-image: url('https://tuapi.eees.cc/api.php?category=dongman&type=302'); */
+      /* background-repeat: no-repeat; */
+      /* background-size: cover; */
+      /* background-attachment: fixed; */
+      /* background-position-x: center; */
+    /* } */
+  /* } */
 
   /* 夜间背景图 - 手机 */
-  @media only screen and (max-width: 600px) {
-    .hope-ui-dark {
-      background-image: url("https://bj.vipgj555.cn/file/a505e2bc92a89d0fbf2a2.png");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
-      background-position-x: center;
-    }
+  /* @media only screen and (max-width: 600px) { */
+    /* .hope-ui-dark { */
+      /* background-image: url("https://bj.vipgj555.cn/file/a3cb261de3f9e832e2b97.png"); */
+      /* background-repeat: no-repeat; */
+      /* background-size: cover; */
+      /* background-attachment: fixed; */
+      /* background-position-x: center; */
+    /* } */
+  /* } */
+
+  /* 隐藏登陆头像    */
+  .hope-c-PJLV-ibwASZs-css {
+    display: none;
   }
+
 
   /*主列表白天模式透明*/
   .obj-box.hope-stack.hope-c-dhzjXW.hope-c-PJLV.hope-c-PJLV-igScBhH-css {
@@ -360,7 +339,7 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
     background-color: rgb(0 0 0 / 50%) !important;
   }
 
-  /*输入栏里面跳舞的小人背景图*/
+  /* 输入栏里面跳舞的小人背景图 */
   .vedit {
     background-image: url("https://cdn.jsdelivr.net/gh/anwen-anyi/imgAnwen/images/OuNiJiang.gif");
     background-size: contain;
@@ -374,6 +353,7 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
     transition: all 0.25s ease-in-out 0s;
   }
 
+
   /*渐变背景CSS*/
   #canvas-basic {
     position: fixed;
@@ -385,11 +365,5 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
     bottom: 0;
     left: 0;
     z-index: -999;
-  }
-</style>
-<!-- 隐藏登陆头像   -->
-<style>
-  .hope-c-PJLV-ibwASZs-css {
-    display: none;
   }
 </style>

@@ -1,8 +1,33 @@
 <!-- 计数娘 -->
-<img style="margin: 0 auto;" src="https://count.getloli.com/get/@:name" alt=":name" />
+<!-- <img style="margin: 0 auto;" src="https://count.getloli.com/get/@laomao" alt="laomao" /> -->
 <!-- 炫彩 -->
-<style>#nr{font-size:20px;margin: 0;background: -webkit-linear-gradient(left,#ffffff,#ff0000 6.25%,#ff7d00 12.5%,#ffff00 18.75%,#00ff00 25%,#00ffff 31.25%,#0000ff 37.5%,#ff00ff 43.75%,#ffff00 50%,#ff0000 56.25%,#ff7d00 62.5%,#ffff00 68.75%,#00ff00 75%,#00ffff 81.25%,#0000ff 87.5%,#ff00ff 93.75%,#ffff00 100%);-webkit-background-clip: text;-webkit-text-fill-color: transparent;background-size: 200% 100%;animation: masked-animation 2s infinite linear;}@keyframes masked-animation {0% {background-position: 0 0;}100% {background-position: -100%, 0;}}</style><div style="background-color:#333;border-radius:25px;box-shadow:0px 0px 5px #f200ff;padding:5px;margin-top:10px;margin-bottom:0px;"><marquee>
-  <b id="nr">(｡･∀･)ﾉﾞ嗨，欢迎来到我的小破站。帅气漂亮的小哥哥小姐姐</b> </marquee></div>
+<style>
+  #nr {
+    font-size: 20px;
+    margin: 0;
+    background: -webkit-linear-gradient(left, #ffffff, #ff0000 6.25%, #ff7d00 12.5%, #ffff00 18.75%, #00ff00 25%, #00ffff 31.25%, #0000ff 37.5%, #ff00ff 43.75%, #ffff00 50%, #ff0000 56.25%, #ff7d00 62.5%, #ffff00 68.75%, #00ff00 75%, #00ffff 81.25%, #0000ff 87.5%, #ff00ff 93.75%, #ffff00 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 200% 100%;
+    animation: masked-animation 2s infinite linear;
+  }
+
+  @keyframes masked-animation {
+    0% {
+      background-position: 0 0;
+    }
+
+    100% {
+      background-position: -100%, 0;
+    }
+  }
+</style>
+<div
+  style="background-color:#333;border-radius:25px;box-shadow:0px 0px 5px #f200ff;padding:5px;margin-top:10px;margin-bottom:0px;">
+  <marquee>
+    <b id="nr">(｡･∀･)ﾉﾞ嗨，欢迎来追剧。帅气漂亮的小哥哥小姐姐</b>
+  </marquee>
+</div>
 <!--延迟加载-->
 <!--如果要写自定义内容建议都加到这个延迟加载的范围内-->
 <style>
@@ -33,7 +58,7 @@
       <span class="nav-item">
         <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
     </center>
-    
+
     <script language="javascript">
       var now = new Date();
       function createtime() {
@@ -154,6 +179,60 @@
             </p>
           </a>
         </span>
+        <style>
+          body {
+            text-align: center;
+            font-family: "Comic Sans MS", cursive, sans-serif;
+            background-color: #f2f2f2;
+          }
+
+          .cartoon-stats {
+            display: flex;
+            justify-content: space-around;
+            padding: 2px;
+            background-color: #ffd700;
+            border: 2px solid #ff9900;
+            border-radius: 10px;
+            width: 300rpx;
+            resize: none;
+          }
+
+          .cartoon-stats span {
+            display: block;
+            font-size: 15px;
+            margin-bottom: 5px;
+          }
+
+          .cartoon-stats span::before {
+            content: "";
+          }
+
+          .container {
+            display: flex;
+            gap: -15px;
+            justify-content: center;
+          }
+
+          .cartoon-stats:not(:last-child) {
+            border-right: 0 solid #ff9900;
+          }
+        </style>
+        <!--Vercount计数器-->
+        <script defer src="https://vercount.one/js"></script>
+        <div class="container">
+          <div class="cartoon-stats">
+            <p>本文总阅读量</p> <span id="busuanzi_value_page_pv">...</span>次
+          </div>
+          <div class="cartoon-stats">
+            <p>本文总访客量</p> <span id="busuanzi_value_page_uv">...</span>人
+          </div>
+          <div class="cartoon-stats">
+            <p>本站总访问量</p> <span id="busuanzi_value_site_pv">...</span>次
+          </div>
+          <div class="cartoon-stats">
+            <p>本站总访客数</p> <span id="busuanzi_value_site_uv">...</span>人
+          </div>
+        </div>
       </div>
       <br />
   </div>
@@ -177,7 +256,7 @@
 
 <!-- 渐变背景初始化,如果要使用渐变背景把下面的那一行注释去掉即可-->
 <!-- 下面的几行都是渐变的一套,自定义头部内还有一个关联的自定义CSS -->
-<!-- <canvas id="canvas-basic"></canvas> -->
+<!--<canvas id="canvas-basic"></canvas>-->
 <script src="https://npm.elemecdn.com/granim@2.0.0/dist/granim.min.js"></script>
 <script>
   var granimInstance = new Granim({
@@ -254,11 +333,26 @@
         ".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"
       ), n(), r()
   }(window, document);
-
 </script>
-<!-- 隐藏登陆头像   -->
 <style>
+  /* 隐藏登陆头像    */
   .hope-c-PJLV-ibwASZs-css {
     display: none;
   }
 </style>
+<script src="https://cdn.bootcss.com/sweetalert/2.1.0/sweetalert.min.js"></script>
+ <script>
+swal('本站状态:稳定运行中','\n\n本站为私人云盘网站，如果您要下载内部文件，请注意：所有资源仅供学习交流使用，请在下载后24小时内删除','success'); function AddFavorite(title, url) {
+  try {
+      window.external.addFavorite(url, title);
+  }
+catch (e) {
+     try {
+       window.sidebar.addPanel(title, url,);
+    }
+     catch (e) {
+         alert("抱歉，您所使用的浏览器无法完成此操作。");
+     }
+  }
+}
+ </script>
