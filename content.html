@@ -241,7 +241,11 @@
   <br />
 </div>
 <!--一言API-->
-<style>#hitokoto {font-size: 23px;}</style>
+<style>
+  #hitokoto {
+    font-size: 23px;
+  }
+</style>
 <script src="https://v1.hitokoto.cn/?encode=js&select=%23hitokoto" defer></script>
 <!--延迟加载范围到这里结束-->
 </div>
@@ -334,31 +338,149 @@
         ".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"
       ), n(), r()
   }(window, document);
+
 </script>
+
+<!-- 听话的鼠标 -->
 <style>
-  /* 隐藏登陆头像    */
-  .hope-c-PJLV-ibwASZs-css {
-    display: none;
+  /* 鼠标样式 */
+  #cursor {
+    position: fixed;
+    width: 16px;
+    height: 16px;
+    /* 这里改变跟随的底色 */
+    background: var(--theme-color);
+    border-radius: 8px;
+    opacity: 0.25;
+    z-index: 10086;
+    pointer-events: none;
+    transition: 0.2s ease-in-out;
+    transition-property: background, opacity, transform;
+  }
+
+  #cursor.hidden {
+    opacity: 0;
+  }
+
+  #cursor.hover {
+    opacity: 0.1;
+    transform: scale(2.5);
+    -webkit-transform: scale(2.5);
+    -moz-transform: scale(2.5);
+    -ms-transform: scale(2.5);
+    -o-transform: scale(2.5);
+  }
+
+  #cursor.active {
+    opacity: 0.5;
+    transform: scale(0.5);
+    -webkit-transform: scale(0.5);
+    -moz-transform: scale(0.5);
+    -ms-transform: scale(0.5);
+    -o-transform: scale(0.5);
+  }
+
+  #cursor {
+    /* 这里改变跟随的底色 */
+    background: rgb(13, 194, 164);
   }
 </style>
-<script src="https://cdn.bootcss.com/sweetalert/2.1.0/sweetalert.min.js"></script>
- <script>
-swal('本站状态:稳定运行中','\n\n欢迎来到毛哥的资源网盘站\n请注意:所有资源仅供学习交流使用\n少数资源可能失效加载不出来属于正常情况\n切记:请勿用于非法用途','success');
-// 获取弹窗中的文本元素
-const textElement = document.querySelector('.swal-text');
-// 添加样式
-textElement.innerHTML = textElement.innerHTML.replace('切记', '<span style="color: red;">切记</span>');
-function AddFavorite(title, url) {
-  try {
-      window.external.addFavorite(url, title);
-  }
-catch (e) {
-     try {
-       window.sidebar.addPanel(title, url,);
+<script>
+  const CURSOR = {
+    pos: { curr: null, prev: null },
+    pt: [],
+    cursor: null,
+    scr: null,
+
+    lerp: (a, b, n) => (1 - n) * a + n * b,
+
+    getStyle: (el, attr) => {
+      try {
+        return window.getComputedStyle
+          ? window.getComputedStyle(el)[attr]
+          : el.currentStyle[attr];
+      } catch (e) { }
+      return "";
+    },
+
+    move: function (left, top) {
+      this.cursor.style.left = `${left}px`;
+      this.cursor.style.top = `${top}px`;
+    },
+
+    create: function () {
+      if (!this.cursor) {
+        this.cursor = document.createElement("div");
+        this.cursor.id = "cursor";
+        this.cursor.classList.add("hidden");
+        document.body.append(this.cursor);
+      }
+
+      const elements = Array.from(document.getElementsByTagName('*'));
+      this.pt = elements.filter(el => this.getStyle(el, "cursor") === "pointer").map(el => el.outerHTML);
+
+      this.scr = document.createElement("style");
+      this.scr.innerHTML = `* {cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8' width='9px' height='9px'><circle cx='4' cy='4' r='4' opacity='1' fill='rgb(13, 194, 164)'/></svg>") 4 4, auto`;
+      document.body.appendChild(this.scr);
+    },
+
+    refresh: function () {
+      this.scr.remove();
+      this.cursor.classList.remove("hover");
+      this.cursor.classList.remove("active");
+      this.pos = { curr: null, prev: null };
+      this.pt = [];
+      this.create();
+      this.init();
+      this.render();
+    },
+
+    init: function () {
+      document.onmouseover = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.add("hover");
+      document.onmouseout = e => this.pt.includes(e.target.outerHTML) && this.cursor.classList.remove("hover");
+      document.onmousemove = e => { (this.pos.curr == null) && this.move(e.clientX - 8, e.clientY - 8); this.pos.curr = { x: e.clientX - 8, y: e.clientY - 8 }; this.cursor.classList.remove("hidden"); };
+      document.onmouseenter = e => this.cursor.classList.remove("hidden");
+      document.onmouseleave = e => this.cursor.classList.add("hidden");
+      document.onmousedown = e => this.cursor.classList.add("active");
+      document.onmouseup = e => this.cursor.classList.remove("active");
+    },
+
+    render: function () {
+      if (this.pos.prev) {
+        this.pos.prev.x = this.lerp(this.pos.prev.x, this.pos.curr.x, 0.15);
+        this.pos.prev.y = this.lerp(this.pos.prev.y, this.pos.curr.y, 0.15);
+        this.move(this.pos.prev.x, this.pos.prev.y);
+      } else {
+        this.pos.prev = this.pos.curr;
+      }
+      requestAnimationFrame(() => this.render());
     }
-     catch (e) {
-         alert("抱歉，您所使用的浏览器无法完成此操作。");
-     }
+  };
+
+  (() => {
+    CURSOR.create();
+    CURSOR.init();
+    CURSOR.render();
+  })();
+</script>
+<script src="https://cdn.bootcss.com/sweetalert/2.1.0/sweetalert.min.js"></script>
+<script>
+  swal('本站状态:稳定运行中', '\n\n欢迎来到毛哥的资源网盘站\n请注意:所有资源仅供学习交流使用\n少数资源可能失效加载不出来属于正常情况\n切记:请勿用于非法用途', 'success');
+  // 获取弹窗中的文本元素
+  const textElement = document.querySelector('.swal-text');
+  // 添加样式
+  textElement.innerHTML = textElement.innerHTML.replace('切记', '<span style="color: red;">切记</span>');
+  function AddFavorite(title, url) {
+    try {
+      window.external.addFavorite(url, title);
+    }
+    catch (e) {
+      try {
+        window.sidebar.addPanel(title, url,);
+      }
+      catch (e) {
+        alert("抱歉，您所使用的浏览器无法完成此操作。");
+      }
+    }
   }
-}
- </script>
+</script>
