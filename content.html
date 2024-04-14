@@ -341,6 +341,143 @@
 
 </script>
 
+<!-- 网页鼠标点击特效 -气球 -->
+<!-- <script>
+  function clickEffect() {
+        let balls = [];
+        let longPressed = false;
+        let longPress;
+        let multiplier = 0;
+        let width, height;
+        let origin;
+        let normal;
+        let ctx;
+        const colours = ["#F73859", "#14FFEC", "#00E0FF", "#FF99FE", "#FAF15D"];
+        const canvas = document.createElement("canvas");
+        document.body.appendChild(canvas);
+        canvas.setAttribute("style", "width: 100%; height: 100%; top: 0; left: 0; z-index: 99999; position: fixed; pointer-events: none;");
+        const pointer = document.createElement("span");
+        pointer.classList.add("pointer");
+        document.body.appendChild(pointer);
+    
+        if (canvas.getContext && window.addEventListener) {
+            ctx = canvas.getContext("2d");
+            updateSize();
+            window.addEventListener('resize', updateSize, false);
+            loop();
+            window.addEventListener("mousedown", function(e) {
+                pushBalls(randBetween(10, 20), e.clientX, e.clientY);
+                document.body.classList.add("is-pressed");
+                longPress = setTimeout(function() {
+                    document.body.classList.add("is-longpress");
+                    longPressed = true;
+                }, 500);
+            }, false);
+            window.addEventListener("mouseup", function(e) {
+                clearInterval(longPress);
+                if (longPressed == true) {
+                    document.body.classList.remove("is-longpress");
+                    pushBalls(randBetween(50 + Math.ceil(multiplier), 100 + Math.ceil(multiplier)), e.clientX, e.clientY);
+                    longPressed = false;
+                }
+                document.body.classList.remove("is-pressed");
+            }, false);
+            window.addEventListener("mousemove", function(e) {
+                let x = e.clientX;
+                let y = e.clientY;
+                pointer.style.top = y + "px";
+                pointer.style.left = x + "px";
+            }, false);
+        } else {
+            console.log("canvas or addEventListener is unsupported!");
+        }
+    
+    
+        function updateSize() {
+            canvas.width = window.innerWidth * 2;
+            canvas.height = window.innerHeight * 2;
+            canvas.style.width = window.innerWidth + 'px';
+            canvas.style.height = window.innerHeight + 'px';
+            ctx.scale(2, 2);
+            width = (canvas.width = window.innerWidth);
+            height = (canvas.height = window.innerHeight);
+            origin = {
+                x: width / 2,
+                y: height / 2
+            };
+            normal = {
+                x: width / 2,
+                y: height / 2
+            };
+        }
+        class Ball {
+            constructor(x = origin.x, y = origin.y) {
+                this.x = x;
+                this.y = y;
+                this.angle = Math.PI * 2 * Math.random();
+                if (longPressed == true) {
+                    this.multiplier = randBetween(14 + multiplier, 15 + multiplier);
+                } else {
+                    this.multiplier = randBetween(6, 12);
+                }
+                this.vx = (this.multiplier + Math.random() * 0.5) * Math.cos(this.angle);
+                this.vy = (this.multiplier + Math.random() * 0.5) * Math.sin(this.angle);
+                this.r = randBetween(8, 12) + 3 * Math.random();
+                this.color = colours[Math.floor(Math.random() * colours.length)];
+            }
+            update() {
+                this.x += this.vx - normal.x;
+                this.y += this.vy - normal.y;
+                normal.x = -2 / window.innerWidth * Math.sin(this.angle);
+                normal.y = -2 / window.innerHeight * Math.cos(this.angle);
+                this.r -= 0.3;
+                this.vx *= 0.9;
+                this.vy *= 0.9;
+            }
+        }
+    
+        function pushBalls(count = 1, x = origin.x, y = origin.y) {
+            for (let i = 0; i < count; i++) {
+                balls.push(new Ball(x, y));
+            }
+        }
+    
+        function randBetween(min, max) {
+            return Math.floor(Math.random() * max) + min;
+        }
+    
+        function loop() {
+            ctx.fillStyle = "rgba(255, 255, 255, 0)";
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < balls.length; i++) {
+                let b = balls[i];
+                if (b.r < 0) continue;
+                ctx.fillStyle = b.color;
+                ctx.beginPath();
+                ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2, false);
+                ctx.fill();
+                b.update();
+            }
+            if (longPressed == true) {
+                multiplier += 0.2;
+            } else if (!longPressed && multiplier >= 0) {
+                multiplier -= 0.4;
+            }
+            removeBall();
+            requestAnimationFrame(loop);
+        }
+    
+        function removeBall() {
+            for (let i = 0; i < balls.length; i++) {
+                let b = balls[i];
+                if (b.x + b.r < 0 || b.x - b.r > width || b.y + b.r < 0 || b.y - b.r > height || b.r < 0) {
+                    balls.splice(i, 1);
+                }
+            }
+        }
+    }
+    clickEffect();
+</script> -->
 <!-- 听话的鼠标 -->
 <style>
   /* 鼠标样式 */
@@ -483,4 +620,37 @@
       }
     }
   }
+</script>
+<script>
+  console.log(`%c
+                                         ,s555SB@@&                          
+                                       :9H####@@@@@Xi                        
+                                      1@@@@@@@@@@@@@@8                       
+                                    ,8@@@@@@@@@B@@@@@@8                      
+                                   :B@@@@X3hi8Bs;B@@@@@Ah,                   
+              ,8i                  r@@@B:     1S ,M@@@@@@#8;                 
+             1AB35.i:               X@@8 .   SGhr ,A@@@@@@@@S                
+             1@h31MX8                18Hhh3i .i3r ,A@@@@@@@@@5               
+             ;@&i,58r5                 rGSS:     :B@@@@@@@@@@A               
+              1#i  . 9i                 hX.  .: .5@@@@@@@@@@@1               
+               sG1,  ,G53s.              9#Xi;hS5 3B@@@@@@@B1                
+                .h8h.,A@@@MXSs,           #@H1:    3ssSSX@1                  
+                s ,@@@@@@@@@@@@Xhi,       r#@@X1s9M8    .GA981               
+                ,. rS8H#@@@@@@@@@@#HG51;.  .h31i;9@r    .8@@@@BS;i;          
+                 .19AXXXAB@@@@@@@@@@@@@@#MHXG893hrX#XGGXM@@@@@@@@@@MS        
+                 s@@MM@@@hsX#@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@&,      
+               :GB@#3G@@Brs ,1GM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@B,     
+             .hM@@@#@@#MX 51  r;iSGAM@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@8     
+           :3B@@@@@@@@@@@&9@h :Gs   .;sSXH@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@:    
+       s&HA#@@@@@@@@@@@@@@M89A;.8S.       ,r3@@@@@@@@@@@@@@@@@@@@@@@@@@@r    
+    ,13B@@@@@@@@@@@@@@@@@@@5 5B3 ;.         ;@@@@@@@@@@@@@@@@@@@@@@@@@@@i    
+   5#@@#&@@@@@@@@@@@@@@@@@@9  .39:          ;@@@@@@@@@@@@@@@@@@@@@@@@@@@;    
+   9@@@X:MM@@@@@@@@@@@@@@@#;    ;31.         H@@@@@@@@@@@@@@@@@@@@@@@@@@:    
+    SH#@B9.rM@@@@@@@@@@@@@B       :.         3@@@@@@@@@@@@@@@@@@@@@@@@@@5    
+      ,:.   9@@@@@@@@@@@#HB5                 .M@@@@@@@@@@@@@@@@@@@@@@@@@B    
+            ,ssirhSM@&1;i19911i,.             s@@@@@@@@@@@@@@@@@@@@@@@@@@S   
+               ,,,rHAri1h1rh&@#353Sh:          8@@@@@@@@@@@@@@@@@@@@@@@@@#:  
+             .A3hH@#5S553&@@#h   i:i9S          #@@@@@@@@@@@@@@@@@@@@@@@@@A.
+            你小子又来看源码!!!
+`, 'color: rgb(255, 215, 0)');
 </script>

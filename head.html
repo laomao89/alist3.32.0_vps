@@ -25,11 +25,15 @@
 <!-- require MetingJS -->
 <script src="https://npm.elemecdn.com/meting2@0.0.1/js/Meting.min.js"></script>
 <style>
-
   /*音乐播放器进一步进行隐藏*/
   /* 需要就加不需要就不用加 */
   .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
     left: -66px !important;
+  }
+
+  /* 去除通知栏 右上角 X */
+  .notify-render .hope-close-button {
+    display: none;
   }
 
   .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
@@ -76,7 +80,10 @@
   }
 
   /* 去除公告x关闭按钮 */
-  .notify-render .hope-close-button{display: none;}
+  .notify-render .hope-close-button {
+    display: none;
+  }
+
   /* 此选项两处CSS 在v3.31.0中已优化 滚动显示 和 右下角设置网格模式尺寸大小 */
   /* 文字超长自动换行 */
   /*.name-box .name {
@@ -91,22 +98,24 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
   height: 100px;
 }*/
 
-/*白天背景图*/
- .hope-ui-light {
+  /*白天背景图*/
+  .hope-ui-light {
     background-image: url("https://tuapi.eees.cc/api.php?category=dongman&type=302") !important;
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-attachment:fixed;
-    background-position-x:center;
-}
-/*夜间背景图*/
- .hope-ui-dark {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: center;
+  }
+
+  /*夜间背景图*/
+  .hope-ui-dark {
     background-image: url("https://tuapi.eees.cc/api.php?category=dongman&type=302") !important;
-    background-repeat:no-repeat;
-    background-size:cover;
-    background-attachment:fixed;
-    background-position-x:center;
-}
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position-x: center;
+  }
+
   /* 白天背景图 - PC */
   /* .hope-ui-light {
     background-image: url("https://bj.vipgj555.cn/file/7c2f066b076ab2ed935e1.png");
@@ -116,7 +125,7 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
     background-position-x: center;
   } */
 
-   /* 夜间背景图 - PC  */
+  /* 夜间背景图 - PC  */
   /* .hope-ui-dark {
     background-image: url("https://bj.vipgj555.cn/file/1ed14dffb6a06aaaea8ad.png");
     background-repeat: no-repeat;
@@ -127,31 +136,31 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
 
   /* 白天背景图 - 手机 */
   /* @media only screen and (max-width: 600px) { */
-    /* .hope-ui-light { */
-      /* background-image: url("https://bj.vipgj555.cn/file/1bd41c38b11290b7b491b.png"); */
-      /* background-image: url('https://tuapi.eees.cc/api.php?category=dongman&type=302'); */
-      /* background-repeat: no-repeat; */
-      /* background-size: cover; */
-      /* background-attachment: fixed; */
-      /* background-position-x: center; */
-    /* } */
+  /* .hope-ui-light { */
+  /* background-image: url("https://bj.vipgj555.cn/file/1bd41c38b11290b7b491b.png"); */
+  /* background-image: url('https://tuapi.eees.cc/api.php?category=dongman&type=302'); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
+  /* background-position-x: center; */
+  /* } */
   /* } */
 
   /* 夜间背景图 - 手机 */
   /* @media only screen and (max-width: 600px) { */
-    /* .hope-ui-dark { */
-      /* background-image: url("https://bj.vipgj555.cn/file/a3cb261de3f9e832e2b97.png"); */
-      /* background-repeat: no-repeat; */
-      /* background-size: cover; */
-      /* background-attachment: fixed; */
-      /* background-position-x: center; */
-    /* } */
+  /* .hope-ui-dark { */
+  /* background-image: url("https://bj.vipgj555.cn/file/a3cb261de3f9e832e2b97.png"); */
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
+  /* background-attachment: fixed; */
+  /* background-position-x: center; */
+  /* } */
   /* } */
 
   /* 隐藏登陆头像    */
-  .hope-c-PJLV-ibwASZs-css {
+  /*.hope-c-PJLV-ibwASZs-css {
     display: none;
-  }
+  }*/
 
 
   /*主列表白天模式透明*/
@@ -249,7 +258,7 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
 
   /*导航条*/
   .hope-c-PJLV-icKsjdm-css::after {
-    background: rgba(255, 255, 255, 0) !important;
+    background: rgba(57, 197, 187,0.9) !important;
   }
 
   /*白天模式*/
@@ -267,7 +276,8 @@ grid-template-columns: repeat(auto-fill, minmax(160px, 1fr))
   /*仅吸附导航栏*/
   /*导航条*/
   .hope-c-PJLV-ifdXShc-css::after {
-    background: rgba(255, 255, 255, 0) !important;
+    /* background: rgba(255, 255, 255, 0) !important; */
+    background: rgba(57, 197, 187,0.9) !important;
   }
 
   /*白天模式*/
